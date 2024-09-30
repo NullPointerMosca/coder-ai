@@ -6,4 +6,5 @@ import it.dueirg.coderai.entity.MmProperties;
 
 @Repository
 public interface MmPropertiesRepository extends JpaRepository<MmProperties, String> {
+	MmProperties findByPropName(String propName);
 }
