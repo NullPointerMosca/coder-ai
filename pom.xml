@@ -21,6 +21,8 @@
 
     <properties>
         <java.version>11</java.version>
+        <version-release-dm-common>1.0.45</version-release-dm-common>
+        <version-release-dm-module>COLL_1.0.55-SNAPSHOT</version-release-dm-module>
     </properties>
 
     <dependencies>
@@ -60,6 +62,51 @@
             <version>1.18.24</version>
             <scope>provided</scope>
         </dependency>
+        		<dependency>
+			<groupId>com.ericsson</groupId>
+			<artifactId>GAS-DRIVER-INTERFACE-SWARM</artifactId>
+			<version>${version-release-dm-module}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ericsson</groupId>
+			<artifactId>DEVICE-MANAGER-SWARM</artifactId>
+			<version>${version-release-dm-module}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ericsson</groupId>
+			<artifactId>WMBUS-DRIVER-SWARM</artifactId>
+			<version>${version-release-dm-module}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ericsson</groupId>
+			<artifactId>DLMS-LIB-MODULE-SWARM</artifactId>
+			<version>${version-release-dm-module}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ericsson</groupId>
+			<artifactId>DLMS-MM-METER-DRIVER-SWARM</artifactId>
+			<version>${version-release-dm-module}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ericsson</groupId>
+			<artifactId>DLMS-DRIVER-SWARM</artifactId>
+			<version>${version-release-dm-module}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ericsson</groupId>
+			<artifactId>WEB_SERVICE_LIB</artifactId>
+			<version>${version-release-dm-module}</version>
+		</dependency>
+        <dependency>
+			<groupId>com.ericsson</groupId>
+			<artifactId>DM_COMMON_PROJECT</artifactId>
+			<version>${version-release-dm-common}</version>
+		</dependency>
+        <dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.3</version>
+  		</dependency>
     </dependencies>
     <build>
         <plugins>

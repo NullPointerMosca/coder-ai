@@ -1,5 +1,7 @@
 package it.dueirg.coderai.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -13,9 +15,14 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name = "METER_PROD_CODE_MAPPING")
-public class MeterProdCodeMapping {
+public class MeterProdCodeMapping implements Serializable{
+
+    private final static long serialVersionUID = -1;
 
     @Id
+    @Column(name ="ID")
+    private Long id;
+
     @Column(name = "PRODUCER_CODE", nullable = false, length = 4)
     private String producerCode;
 
