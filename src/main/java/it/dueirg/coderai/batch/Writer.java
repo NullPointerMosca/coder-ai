@@ -46,7 +46,7 @@ public class Writer implements ItemWriter<ProcessedFiles> {
                     if (outputPathProperty == null) {
                         throw new RuntimeException("Output path property not found");
                     }
-                    File newFile = new File(outputPathProperty.getPropValue() + "/DOWNLOAD/" + newFileName);
+                    File newFile = new File(outputPathProperty.getPropValue() + "/DONE/" + newFileName);
                     try (BufferedWriter writer = new BufferedWriter(new FileWriter(newFile))) {
                         for (String line : processedLines) {
                             writer.write(line);
@@ -72,13 +72,13 @@ public class Writer implements ItemWriter<ProcessedFiles> {
                     logger.info("File di errore creato: " + errorFile.getAbsolutePath());
                 }
 
-                MmProperties donePathProperty = mmPropertiesRepository.findByPropName("trame.corrotte.path.file.in");
-                if (donePathProperty == null) {
-                    throw new RuntimeException("Done path property not found");
-                }
-                File doneFile = new File(donePathProperty.getPropValue() + "/DONE/" + generateFileName(processedLines.get(0), fileName));
-                Files.move(new File(fileName).toPath(), doneFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-                logger.info("File originale spostato nella directory DONE: " + doneFile.getAbsolutePath());
+                //MmProperties donePathProperty = mmPropertiesRepository.findByPropName("trame.corrotte.path.file.in");
+                //if (donePathProperty == null) {
+                //    throw new RuntimeException("Done path property not found");
+                //}
+                //File doneFile = new File(donePathProperty.getPropValue() + "/DONE/" + generateFileName(processedLines.get(0), fileName));
+                //Files.move(new File(fileName).toPath(), doneFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                //logger.info("File originale spostato nella directory DONE: " + doneFile.getAbsolutePath());
             }
         }
         logger.info("Scrittura completata");
@@ -98,6 +98,6 @@ public class Writer implements ItemWriter<ProcessedFiles> {
         String[] fileNameParts = fileName.split("_");
         String serialDc = fileNameParts[4];
 
-        return String.format("PeriodicReading_%s_%s_%s_%s_Urmet_da_log_NOK.cvs", ddmm, yyyy, hh, serialDc);
+        return String.format("PeriodicReading_%s_%s_%s_%s_Urmet_da_log_NOK.csv", ddmm, yyyy, hh, serialDc);
     }
 }

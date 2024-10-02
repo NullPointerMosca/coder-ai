@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import it.dueirg.coderai.entity.MeterProdCodeMapping;
 
 @Repository
-public interface MeterProdCodeMappingRepository extends JpaRepository<MeterProdCodeMapping, String> {
+public interface MeterProdCodeMappingRepository extends JpaRepository<MeterProdCodeMapping, Long> {
     Optional<MeterProdCodeMapping> findByVersionAndMappedProducerCode(String version, String mappedProducerCode);
     MeterProdCodeMapping findByMappedProducerCodeAndVersion(String mappedProducerCode, String version);
 }

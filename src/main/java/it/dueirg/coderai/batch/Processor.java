@@ -125,7 +125,7 @@ public class Processor implements ItemProcessor<List<File>, ProcessedFiles> {
                         } else
                             log.info("Chiave o driver non trovato scarto la lettura");
                     }
-                    return new ProcessedFiles(processedLines, errorLines);
+                   // return new ProcessedFiles(processedLines, errorLines);
 
               //      String cf17Apdu = reconstructCf17(decryptedApdu);
               //      String encryptedCf17Apdu = encryptAndAuthenticateCf17(cf17Apdu);
