@@ -125,7 +125,7 @@ public class Processor implements ItemProcessor<List<File>, ProcessedFiles> {
                         } else
                             log.info("Chiave o driver non trovato scarto la lettura");
                     }
-                    return null;
+                    return new ProcessedFiles(processedLines, errorLines);
 
               //      String cf17Apdu = reconstructCf17(decryptedApdu);
               //      String encryptedCf17Apdu = encryptAndAuthenticateCf17(cf17Apdu);
@@ -139,25 +139,5 @@ public class Processor implements ItemProcessor<List<File>, ProcessedFiles> {
         }
 
         return new ProcessedFiles(processedLines, errorLines);
-    }
-
-    private String decryptApdu(String apdu) {
-        // Implementa la logica di decifratura qui
-        return apdu; // Placeholder
-    }
-
-    private boolean isCf95(String apdu) {
-        // Implementa la logica di verifica qui
-        return true; // Placeholder
-    }
-
-    private String reconstructCf17(String apdu) {
-        // Implementa la logica di ricostruzione qui
-        return apdu; // Placeholder
-    }
-
-    private String encryptAndAuthenticateCf17(String apdu) {
-        // Implementa la logica di crittografia e autenticazione qui
-        return apdu; // Placeholder
     }
 }

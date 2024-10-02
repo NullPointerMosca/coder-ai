@@ -28,6 +28,7 @@ public class Writer implements ItemWriter<ProcessedFiles> {
 
     @Override
     public void write(List<? extends ProcessedFiles> items) throws Exception {
+        logger.info("Inizio scrittura dei file elaborati");
         for (ProcessedFiles processedFiles : items) {
             Map<String, List<String>> processedLinesMap = processedFiles.getProcessedLines();
             Map<String, List<String>> errorLinesMap = processedFiles.getErrorLines();
@@ -36,6 +37,8 @@ public class Writer implements ItemWriter<ProcessedFiles> {
                 String fileName = entry.getKey();
                 List<String> processedLines = entry.getValue();
                 List<String> errorLines = errorLinesMap.get(fileName);
+
+                logger.info("Scrittura del file: " + fileName);
 
                 if (!processedLines.isEmpty()) {
                     String newFileName = generateFileName(processedLines.get(0), fileName);
@@ -73,16 +76,12 @@ public class Writer implements ItemWriter<ProcessedFiles> {
                 if (donePathProperty == null) {
                     throw new RuntimeException("Done path property not found");
                 }
-                if(!processedLines.isEmpty()){
-                    File doneFile = new File(donePathProperty.getPropValue() + "/DONE/" + generateFileName(processedLines.get(0), fileName));
-                    Files.move(new File(fileName).toPath(), doneFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-                    logger.info("File originale spostato nella directory DONE: " + doneFile.getAbsolutePath());
-                }else{
-                    logger.info("Nessun file DONE");
-                }
-
+                File doneFile = new File(donePathProperty.getPropValue() + "/DONE/" + generateFileName(processedLines.get(0), fileName));
+                Files.move(new File(fileName).toPath(), doneFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                logger.info("File originale spostato nella directory DONE: " + doneFile.getAbsolutePath());
             }
         }
+        logger.info("Scrittura completata");
     }
 
     private String generateFileName(String line, String fileName) {
@@ -99,6 +98,6 @@ public class Writer implements ItemWriter<ProcessedFiles> {
         String[] fileNameParts = fileName.split("_");
         String serialDc = fileNameParts[4];
 
-        return String.format("PeriodicReading_%s_%s_%s_%s_Urmet_da_log_NOK.csv", ddmm, yyyy, hh, serialDc);
+        return String.format("PeriodicReading_%s_%s_%s_%s_Urmet_da_log_NOK.cvs", ddmm, yyyy, hh, serialDc);
     }
 }
